@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <!-- 因为mian.js中使用了ES6的语法，浏览器不能解析 -->
+    <!-- <script src='./main.js'></script> -->
+    <!-- 通过webpack处理后将main.js处理成bundle.js再引入就能解析了 -->
+    <!-- 命令格式为：webpack src/main.js -o dist/bundle.js -->
+    <!-- <script src='../dist/bundle.js'></script> -->
+
+    <!-- 引入内存中的那个bundle.js -->
+    <!-- <script src='/bundle.js'></script>使用html-webpack-plugin后就不需要手动引入了 -->
+</head>
+<body>
+    <ul>
+        <li>这是第1个li</li>
+        <li>这是第2个li</li>
+        <li>这是第3个li</li>
+        <li>这是第4个li</li>
+        <li>这是第5个li</li>
+        <li>这是第6个li</li>
+        <li>这是第7个li</li>
+        <li>这是第8个li</li>
+        <li>这是第9个li</li>
+        <li>这是第10个li</li>
+    </ul>
+</body>
+</html>
