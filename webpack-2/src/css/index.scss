@@ -1,0 +1,16 @@
+html, body{
+    .box{
+        width:220px;
+        height:220px;
+        //默认情况下webpack不能处理css样式中的地址url，不管图片还是字体库都不行
+        background:url('../images/1.jpg');
+        background-size: cover;
+    }
+    .box2{
+        width:220px;
+        height:220px;
+        //默认情况下webpack不能处理css样式中的地址url，不管图片还是字体库都不行
+        background:url('../images/1.jpg');
+        background-size: cover;
+    }
+}

@@ -1,6 +1,41 @@
 1. 新建一个英文文件夹，然后用vscode打开文件夹
+
 2. 在命令终端输入：npm init -y 初始化项目
+
 3. 新建src文件夹，在src下新建index.html和main.js
+
 4. 安装项目的自动打包工具：npm i webpack-dev-server -D 
+
 5. 由于webpack-dev-server依赖于webpack，所以还要安装webpack在项目中：cnpm i webpack -D
+
 6. 在项目根目录下新建webpack.config.js配置文件
+
+7. 按照webpack.config.js文件中的顺序配置，实现在终端输入webpack就能打包
+
+8. 在package.json中的"scripts"下添加脚本：
+   "dev": "webpack-dev-server --open --port 8088 --contentBase src --hot"
+   实现实时打包 
+
+9. 安装 html-webpack-plugin，实现自动引入js和文件：cnpm i html-webpack-plugin -D
+
+10. 在页面引入css样式的步骤：
+
+    （1）在src下新建css文件夹，再新建index.css文件最后设置样式
+
+    （2）在main.js中引入 css文件：import './css/index.css'
+
+    （3）安装第三方处理css文件类型的loader插件：cnpm i style-loader css-loader -D
+
+     (4) 配置匹配规则在webpack.config.js文件中
+
+     (5) less样式也是一样的步骤：只不过要安装的是：less-loader和less
+
+     (6) scss样式安装的是：sass-loader 和 node-sass
+
+11. 安装处理样式中的URL的第三方loader：cnpm i url-loader file-loader -D
+    url-loader依赖于file-loader
+    
+    (1)在{ test: /\.(jpg|png|gif|bmp|jpeg)$/ , use: 'url-loader?limit=1,264,784&name=[name].[ext]'}
+       中的传参,传参方式和我们的url传参一样的
+       limit（图片的大小，单位是：byte）：当图片的大小<limit的值时会进行base64编码，否则就不会
+       name=[name].[ext]:设置原图片名不变（即name=之前的名字.之前的后缀名）这是固定写法

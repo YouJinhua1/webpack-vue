@@ -1,9 +1,35 @@
 //由于webpack是基于node构建的，所以在webpack的配置文件中任何合法的node语法都是支持的
-var path = require('path')//1. 定义路径
+//1. 定义路径
+var path = require('path')
 
-module.exports={//2. 配置自动打包的配置路径和文件名称等
+//3. 引入html-webpack-plugin
+var htmlWebpackPlugin=require('html-webpack-plugin')
+ 
+//2. 配置自动打包的配置
+module.exports={
     entry: path.join(__dirname,'./src/main.js'),//配置入口文件
     output: {//配置输出位置和名称
-        filename: ''
+        path: path.join(__dirname,'./dist'),//配置输出路径
+        filename: 'bundle.js'//配置输出文件名
+    },
+
+    //4. 配置html-webpack-plugin
+    plugins: [//所有插件的配置节点
+        new htmlWebpackPlugin({//创建一个html-webpack-plugin对象
+            template:path.join(__dirname,'./src/index.html'),//指定生成内存中的html页面的模板
+            filename: 'index.html'//指定新生成的页面的名称为：index.html
+        }),
+    ],
+
+    //5. 配置loader匹配规则
+    module:{//配置所有第三方loader的节点
+        rules:[//第三方模块的匹配规则
+            { test: /\.css$/ , use: [ 'style-loader' , 'css-loader' ] },//css文件的匹配规则
+            { test: /\.less$/ , use: [ 'style-loader' , 'css-loader' , 'less-loader' ] },//less文件的匹配规则
+            { test: /\.scss$/ , use: [ 'style-loader' , 'css-loader' , 'sass-loader' ] },
+            { test: /\.(jpg|png|gif|bmp|jpeg)$/ , use: 'url-loader?limit=1,264,784'}//处理图片路径的loader
+        ]
+
     }
+
 }
