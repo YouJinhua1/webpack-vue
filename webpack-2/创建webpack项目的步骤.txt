@@ -1,0 +1,6 @@
+1. 新建一个英文文件夹，然后用vscode打开文件夹
+2. 在命令终端输入：npm init -y 初始化项目
+3. 新建src文件夹，在src下新建index.html和main.js
+4. 安装项目的自动打包工具：npm i webpack-dev-server -D 
+5. 由于webpack-dev-server依赖于webpack，所以还要安装webpack在项目中：cnpm i webpack -D
+6. 在项目根目录下新建webpack.config.js配置文件
