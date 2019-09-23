@@ -29,10 +29,13 @@
     "sass-loader": "^8.0.0",
     "style-loader": "^1.0.0",
     "url-loader": "^2.1.0",
+    "vue-loader": "^14.2.2",
+    "vue-template-compiler": "^2.5.2",
     "webpack": "^4.39.3",
     "webpack-dev-server": "^3.8.0"
   },
   "dependencies": {
-    "bootstrap": "^4.3.1"
+    "bootstrap": "^4.3.1",
+    "vue": "^2.6.10"
   }
 }

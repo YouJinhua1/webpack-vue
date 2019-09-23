@@ -29,10 +29,16 @@ module.exports={
             { test: /\.scss$/ , use: [ 'style-loader' , 'css-loader' , 'sass-loader' ] },
             { test: /\.(jpg|png|gif|bmp|jpeg)$/ , use: 'url-loader?limit=1,264,784'},//处理图片路径的loader
             { test: /\.(ttf|woff2|eot|woff|svg)$/ , use: 'url-loader'},//处理字体文件路径的匹配规则
-            { test: /\.js$/, use: 'babel-loader', exclude: /node_modules/ }//配置babel来转换高级的ES6语法
-           // { test: /\.js$/, exclude: /node_modules/, loader: "babel-loader" }
+            { test: /\.js$/, use: 'babel-loader', exclude: /node_modules/ },//配置babel来转换高级的ES6语法
+            // { test: /\.js$/, exclude: /node_modules/, loader: "babel-loader" }
+            { test: /\.vue$/, use: 'vue-loader'},//配置 .vue文件的解析loader
         ]
 
+    },
+    resolve:{
+        alias:{
+            "vue$":"vue/dist/vue.js",//修改vue被导入时的包的路径
+        }
     }
 
 }

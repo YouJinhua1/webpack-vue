@@ -1,0 +1,39 @@
+一、 复习：在普通网页中使用vue的方式：
+     1. 使用<Script>标签，引入vue的包
+     2. 在index.html页面中，创建一个id为app的div容器
+     3. 通过new Vue得到一个VM的实例
+
+二、 1. 在webpack中使用vue：
+       （1） cnpm i vue -S 安装vue的包
+       （2） 在main.js中导入vue：import Vue from "vue"
+    
+     2. 注意：在webpack中，使用import Vue from "vue"导入的vue构造函数，功能是不完整的
+              只提供了runtime-only的方式，并没有提供像网页中那样的使用方式。
+
+     3. node中包的查找：
+       （1） 查找项目根目录中有没有node_modules的文件夹
+       （2） 如果存在，在node_modules中根据报名查找对应的vue文件夹
+       （3） 如果存在，在vue文件夹中查找一个叫package.json的配置文件
+       （4） 在package.json文件中查找一个main属性
+             [ main属性指定了这个包在被加载时候的入口文件 ]
+
+     4. 导入完整的vue的方式：
+        (1) 使用import Vue from "../node_modules/vue/dist/vue.js"
+
+            为什么要这样写呢？
+                通过node中包的查找，就可以看出在vue文件夹中的package.json的配置文件
+                main属性指定的是：dist/vue.runtime.common.js，由此可以看出它的入口文件默认指定的是
+                package.json同级的dist文件夹下的vue.runtime.common.js文件，并不是vue.js文件，因此我们
+                也可以直接修改package.json的main属性来实现导入完整的vue，但是不建议修改package.json文件。
+
+       （2）还是使用：import Vue from "vue"，在webpack.config.js文件中的module.exports节点下
+            添加resolve属性，配置如下：
+             resolve:{
+                alias:{
+                    "vue$":"vue/dist/vue.js",//修改vue被导入时的包的路径
+                }
+             }
+    5. 默认webpack无法打包 .vue 文件需要安装第三方插件：cnpm i vue-loader vue-template-compiler -D
+             
+        
+
